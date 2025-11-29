@@ -67,6 +67,7 @@ This is typically the first message sent by the client during the negotiation ph
 To efficiently isolate these packets, I applied the following Wireshark display filter:
 
 Wireshark
+
 ```tls.handshake.type == 1```
 
 This filter returns all packets where the handshake type is Client Hello, allowing us to analyze:
