@@ -21,6 +21,8 @@ The goal of this project is to help individuals and organizations gain a clearer
 * Ettercap
 * Wireshark
 * Additional tools will be noted where applied
+**Note**: All labs and installations required for this project have already been completed. A detailed installation and lab setup guide will be linked in future updates. For now, this repository is intended for review and observation.
+If your own lab environment includes the tools listed above, you may follow along with caution.
 
 ### Ethical Notice
 * All activities were conducted strictly in a lab environment
@@ -28,3 +30,30 @@ The goal of this project is to help individuals and organizations gain a clearer
 * This research is intended solely for educational and cybersecurity awareness purposes
 
 **Unauthorized use of the information provided is strictly prohibited. Always ensure proper authorization before conducting any security testing.**
+
+**How Can an Adversary Capture Your Network Traffic Remotely?**
+You might be wondering how a threat actor could intercept your network traffic without having direct access to your internal network. In real-world attack scenarios, cybercriminals often exploit weaknesses in wireless authentication using techniques such as rogue access point (AP) deployment.
+
+An attacker could set up a malicious AP designed to mimic a legitimate one by:
+* Broadcasting a similar or identical SSID (network name)
+* Configuring authentication to be open or weak, encouraging automatic connection
+* Exploiting device behavior where systems connect to previously known or stronger signal networks without user intervention
+
+Once a victim connects to this rogue AP, their traffic is routed through an attacker-controlled network, which can allow:
+
+* Traffic interception and packet inspection
+* TLS downgrade or manipulation attempts
+* Credential harvesting
+* Session hijacking or redirection attacks
+* Possible funneling into further exploitation tools
+
+Why Strong Authentication Matters
+
+In enterprise and even private environments, relying on simple WPA/WPA2-PSK is not enough. To prevent rogue AP-based attacks and unauthorized access, two-way authentication mechanisms should be enforced, such as:
+
+| Authentication Type | Protection Mechanism | Best Use Case |
+|--------------------|----------------------|---------------|
+| **EAP (Extensible Authentication Protocol)** | Mutual verification of client and network using certificates or credentials | Enterprise networks |
+| **PEAP (Protected EAP)** | Uses TLS tunnel to secure EAP negotiation | Enterprise Wi-Fi, authentication servers |
+
+These protocols verify both endpoints — ensuring the client is legitimate and the network is trustworthy before communication is allowed. That eliminates the chances of a device unknowingly connecting to a spoofed network.
