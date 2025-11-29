@@ -57,3 +57,22 @@ In enterprise and even private environments, relying on simple WPA/WPA2-PSK is n
 | **PEAP (Protected EAP)** | Uses TLS tunnel to secure EAP negotiation | Enterprise Wi-Fi, authentication servers |
 
 These protocols verify both endpoints — ensuring the client is legitimate and the network is trustworthy before communication is allowed. That eliminates the chances of a device unknowingly connecting to a spoofed network.
+
+### Phase One: TLS Analysis & Recon Using Wireshark
+
+In this phase, I begin by using Wireshark to capture network traffic between the client and server. After monitoring for several minutes to gather sufficient data, the focus shifts to locating the TLS handshake sequence, specifically the Client Hello message.
+This is typically the first message sent by the client during the negotiation phase of the TLS handshake and provides useful insight into supported protocols, cipher suites, and other parameters.
+
+**Identifying Client Hello Messages**
+To efficiently isolate these packets, I applied the following Wireshark display filter:
+Wireshark
+```tls.handshake.type == 1```
+
+This filter returns all packets where the handshake type is Client Hello, allowing us to analyze:
+* Supported TLS versions
+* Available cipher suites
+* Extensions (e.g., SNI, ALPN)
+* Random nonce and session identifiers
+
+Possible clues about client software and configuration<img width="1919" height="932" alt="image" src="https://github.com/user-attachments/assets/0c2cc943-cf1f-42b8-bef4-f0486e00e2c7" />
+
