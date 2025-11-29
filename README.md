@@ -1,6 +1,6 @@
 # TLS Handshake Analysis MITM Attack-Defense Strategies
 
-### **Project Description**
+### Project Description
 
 This repository documents my findings and observations as I explore Man-in-the-Middle (MITM) attacks and defense strategies, including methodology, underlying technologies, and tools used during MITM and session hijacking simulations.
 
